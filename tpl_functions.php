@@ -807,7 +807,7 @@ function bootstrap3_conf($key, $default = false) {
                          $value);
 
     case 'showSidebar':
-      return page_findnearest($conf['sidebar']) && ($ACT=='show');
+      return ( page_findnearest($conf['sidebar']) && ($ACT=='show') && (!bootstrap3_conf('showLandingPage') || !(bool) preg_match(bootstrap3_conf('landingPages'), $ID)) );
 
     case 'showRightSidebar':
       return page_findnearest(tpl_getConf('rightSidebar')) && ($ACT=='show');
